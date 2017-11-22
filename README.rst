@@ -9,11 +9,6 @@ Description
 This code enables the OneLogin service for SSO & MFA in front 
 of Cloud Inquisitor.
 
-Please check out the `README <https://github.com/RiotGames/cloud-inquisitor/blob/master/docs/backend/README.rst>`_ 
-for further details on the how ``cinq-auth-onelogin-saml`` works 
-with further details on ``Cloud Inquisitor`` backend is built and 
-what technologies we use.
-
 =====================
 Configuration Options
 =====================
