@@ -2,7 +2,40 @@
 cinq-auth-onelogin-saml
 ***********************
 
-This code enables the OneLogin service for SSO & MFA in front of Cloud Inquisitor.
+===========
+Description
+===========
+
+This code enables the OneLogin service for SSO & MFA in front 
+of Cloud Inquisitor.
 
 Please check out the `README <https://github.com/RiotGames/cloud-inquisitor/blob/master/docs/backend/README.rst>`_ 
-for further details on the how ``cinq-auth-local`` works with further details on ``Cloud Inquisitor`` backend is built and what technologies we use.
+for further details on the how ``cinq-auth-onelogin-saml`` works 
+with further details on ``Cloud Inquisitor`` backend is built and 
+what technologies we use.
+
+=====================
+Configuration Options
+=====================
+
++---------------------+--------------------------------------+--------+----------------------------------------------------------------------------------+
+| Option name         | Default Value                        | Type   | Description                                                                      |
++=====================+======================================+========+==================================================================================+
+| strict              | True                                 | bool   | Strict validation of SAML responses                                              |
++---------------------+--------------------------------------+--------+----------------------------------------------------------------------------------+
+| debug               | False                                | bool   | Service Provider Entity ID                                                       |
++---------------------+--------------------------------------+--------+----------------------------------------------------------------------------------+
+| sp_entity_id        | Service Provider Entity ID           | string | Service Provider Entity ID                                                       |
++---------------------+--------------------------------------+--------+----------------------------------------------------------------------------------+
+| sp_acs              | None                                 | string | Assertion Consumer endpoint                                                      |
++---------------------+--------------------------------------+--------+----------------------------------------------------------------------------------+
+| sp_sls              | None                                 | string | Single Logout Service endpoint                                                   |
++---------------------+--------------------------------------+--------+----------------------------------------------------------------------------------+
+| idp_entity_id       | None                                 | string | Identity Provider Entity ID                                                      |
++---------------------+--------------------------------------+--------+----------------------------------------------------------------------------------+
+| idp_ssos            | None                                 | string | Single Sign-On Service endpoint                                                  |
++---------------------+--------------------------------------+--------+----------------------------------------------------------------------------------+
+| idp_sls             | None                                 | string  | Single Logout Service endpoint                                                  |
++---------------------+--------------------------------------+--------+----------------------------------------------------------------------------------+
+| idp_x509cert        | None                                 | string  | Base64 encoded x509 certificate for SAML validation                             |
++---------------------+--------------------------------------+--------+----------------------------------------------------------------------------------+
