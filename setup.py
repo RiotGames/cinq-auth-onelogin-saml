@@ -36,7 +36,7 @@ setuptools.setup(
     url='https://github.com/RiotGames/cinq-auth-onelogin-saml/',
     author='Riot Games Security',
     author_email='security@riotgames.com',
-    license='License :: OSI Approved :: Apache Software License',,
+    license='License :: OSI Approved :: Apache Software License',
     classifiers=[
         # Current project status
         'Development Status :: 4 - Beta',
