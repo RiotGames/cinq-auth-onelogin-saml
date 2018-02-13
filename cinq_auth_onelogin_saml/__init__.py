@@ -79,13 +79,13 @@ class SamlLoginConsumer(BaseSamlRequest):
             errors = self.auth.get_errors()
 
             if len(errors) == 0:
-                user = User.query.filter(
+                user = db.User.find_one(
                     User.username == self.auth.get_nameid(),
                     User.auth_system == self.name
-                ).first()
+                )
 
                 if not user:
-                    user_role = Role.query.filter(Role.name == ROLE_USER).first()
+                    user_role = db.Role.find_one(Role.name == ROLE_USER)
                     user = User()
                     user.username = self.auth.get_nameid()
                     user.auth_system = self.name
@@ -101,7 +101,7 @@ class SamlLoginConsumer(BaseSamlRequest):
                 session['samlNameId'] = user.username
                 session['samlSessionIndex'] = self.auth.get_session_index()
                 session['csrf_token'] = generate_csrf_token()
-                session['accounts'] = [x.account_id for x in Account.query.all() if x.user_has_access(user)]
+                session['accounts'] = [x.account_id for x in db.Account.all() if x.user_has_access(user)]
 
                 # Redirect to the page we came from, as long as its not from one of the auth-systems
                 if 'RelayState' in request.form:
