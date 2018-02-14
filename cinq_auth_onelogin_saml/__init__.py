@@ -3,12 +3,12 @@ import re
 from http import HTTPStatus
 from urllib.parse import urlparse
 
-from cloud_inquisitor import db
 from cloud_inquisitor.config import ConfigOption
 from cloud_inquisitor.constants import ROLE_USER
+from cloud_inquisitor.database import db
 from cloud_inquisitor.plugins import BaseAuthPlugin
 from cloud_inquisitor.plugins.views import BaseView
-from cloud_inquisitor.schema import User, Account, Role
+from cloud_inquisitor.schema import User, Role
 from cloud_inquisitor.utils import get_template, generate_csrf_token, generate_jwt_token
 from flask import request, redirect, session
 from onelogin.saml2.auth import OneLogin_Saml2_Auth
