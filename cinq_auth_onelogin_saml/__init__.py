@@ -3,12 +3,12 @@ import re
 from http import HTTPStatus
 from urllib.parse import urlparse
 
-from cloud_inquisitor import db
 from cloud_inquisitor.config import ConfigOption
 from cloud_inquisitor.constants import ROLE_USER
+from cloud_inquisitor.database import db
 from cloud_inquisitor.plugins import BaseAuthPlugin
 from cloud_inquisitor.plugins.views import BaseView
-from cloud_inquisitor.schema import User, Account, Role
+from cloud_inquisitor.schema import User, Role
 from cloud_inquisitor.utils import get_template, generate_csrf_token, generate_jwt_token
 from flask import request, redirect, session
 from onelogin.saml2.auth import OneLogin_Saml2_Auth
@@ -79,13 +79,13 @@ class SamlLoginConsumer(BaseSamlRequest):
             errors = self.auth.get_errors()
 
             if len(errors) == 0:
-                user = User.query.filter(
+                user = db.User.find_one(
                     User.username == self.auth.get_nameid(),
                     User.auth_system == self.name
-                ).first()
+                )
 
                 if not user:
-                    user_role = Role.query.filter(Role.name == ROLE_USER).first()
+                    user_role = db.Role.find_one(Role.name == ROLE_USER)
                     user = User()
                     user.username = self.auth.get_nameid()
                     user.auth_system = self.name
@@ -101,7 +101,7 @@ class SamlLoginConsumer(BaseSamlRequest):
                 session['samlNameId'] = user.username
                 session['samlSessionIndex'] = self.auth.get_session_index()
                 session['csrf_token'] = generate_csrf_token()
-                session['accounts'] = [x.account_id for x in Account.query.all() if x.user_has_access(user)]
+                session['accounts'] = [x.account_id for x in db.Account.all() if x.user_has_access(user)]
 
                 # Redirect to the page we came from, as long as its not from one of the auth-systems
                 if 'RelayState' in request.form:
