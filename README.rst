@@ -2,6 +2,8 @@
 cinq-auth-onelogin-saml
 ***********************
 
+Please open issues in the `Cloud-Inquisitor <https://github.com/RiotGames/cloud-inquisitor/issues/new?labels=cinq-auth-onelogin-saml>`_ repository
+
 ===========
 Description
 ===========
