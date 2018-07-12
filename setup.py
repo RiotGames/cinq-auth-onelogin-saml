@@ -21,7 +21,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     setup_requires=['setuptools_scm'],
     install_requires=[
-        'cloud_inquisitor~=1.1.0',
+        'cloud_inquisitor~=2.0.0',
         'python3-saml~=1.2',
         'flask~=0.12.2',
     ],
